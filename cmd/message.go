@@ -56,7 +56,7 @@ func init() {
 
 func listMessages() error {
 	c := &http.Client{}
-	url := fmt.Sprintf(`http://0.0.0.0:3000/api/applications/%s/chats/%s/messages?query=%s`, appID, chatNo, query)
+	url := fmt.Sprintf(`%s/api/applications/%s/chats/%s/messages?query=%s`, BaseURL, appID, chatNo, query)
 	resp, err := c.Get(url)
 	if err != nil {
 		return errors.New("something went wrong, try again later")
@@ -70,7 +70,7 @@ func listMessages() error {
 
 func newMessage() error {
 	c := &http.Client{}
-	url := fmt.Sprintf(`http://0.0.0.0:3000/api/applications/%s/chats/%s/messages`, appID, chatNo)
+	url := fmt.Sprintf(`%s/api/applications/%s/chats/%s/messages`, BaseURL, appID, chatNo)
 	jsondata := fmt.Sprintf(`{"message": "%s"}`, message)
 	resp, err := c.Post(url, "application/json", bytes.NewBuffer([]byte(jsondata)))
 	if err != nil {
@@ -85,7 +85,7 @@ func newMessage() error {
 
 func showMessage() error {
 	c := &http.Client{}
-	url := fmt.Sprintf(`http://0.0.0.0:3000/api/applications/%s/chats/%s/messages/%s`, appID, chatNo, messageNo)
+	url := fmt.Sprintf(`%s/api/applications/%s/chats/%s/messages/%s`, BaseURL, appID, chatNo, messageNo)
 	resp, err := c.Get(url)
 	if err != nil {
 		return errors.New("something went wrong, try again later")

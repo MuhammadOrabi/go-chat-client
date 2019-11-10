@@ -48,7 +48,7 @@ func init() {
 
 func listChats() error {
 	c := &http.Client{}
-	url := fmt.Sprintf(`http://0.0.0.0:3000/api/applications/%s/chats`, app)
+	url := fmt.Sprintf(`%s/api/applications/%s/chats`, BaseURL, app)
 	resp, err := c.Get(url)
 	if err != nil {
 		return errors.New("something went wrong, try again later")
@@ -62,7 +62,7 @@ func listChats() error {
 
 func newChat() error {
 	c := &http.Client{}
-	url := fmt.Sprintf(`http://0.0.0.0:3000/api/applications/%s/chats`, app)
+	url := fmt.Sprintf(`%s/api/applications/%s/chats`, BaseURL, app)
 	resp, err := c.Post(url, "application/json", bytes.NewBuffer([]byte(`{}`)))
 	if err != nil {
 		return errors.New("something went wrong, try again later")
@@ -76,7 +76,7 @@ func newChat() error {
 
 func showChat() error {
 	c := &http.Client{}
-	url := fmt.Sprintf(`http://0.0.0.0:3000/api/applications/%s/chats/%s`, app, chat)
+	url := fmt.Sprintf(`%s/api/applications/%s/chats/%s`, BaseURL, app, chat)
 	resp, err := c.Get(url)
 	if err != nil {
 		return errors.New("something went wrong, try again later")

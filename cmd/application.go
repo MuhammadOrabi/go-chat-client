@@ -45,8 +45,9 @@ func init() {
 func newApplication() error {
 	c := &http.Client{}
 	params := fmt.Sprintf(`{"name":"%s"}`, name)
-	var jsonStr = []byte(params)
-	resp, err := c.Post("http://0.0.0.0:3000/api/applications", "application/json", bytes.NewBuffer(jsonStr))
+    var jsonStr = []byte(params)
+	url := fmt.Sprintf(`%s/api/applications`, BaseURL)
+	resp, err := c.Post(url, "application/json", bytes.NewBuffer(jsonStr))
 	if err != nil {
 		return errors.New("something went wrong, try again later")
 	}
@@ -59,7 +60,7 @@ func newApplication() error {
 
 func showApplication() error {
 	c := &http.Client{}
-	url := fmt.Sprintf(`http://0.0.0.0:3000/api/applications/%s`, showToken)
+	url := fmt.Sprintf(`%s/api/applications/%s`, BaseURL, showToken)
 	resp, err := c.Get(url)
 	if err != nil {
 		return errors.New("something went wrong, try again later")
@@ -73,7 +74,7 @@ func showApplication() error {
 
 func listApplications() error {
 	c := &http.Client{}
-	url := fmt.Sprintf(`http://0.0.0.0:3000/api/applications`)
+	url := fmt.Sprintf(`%s/api/applications`, BaseURL)
 	resp, err := c.Get(url)
 	if err != nil {
 		return errors.New("something went wrong, try again later")
