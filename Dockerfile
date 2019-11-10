@@ -1,9 +1,9 @@
 FROM golang
 
-WORKDIR /go/src/app
+WORKDIR /go/src/client
 COPY . .
 
 RUN go get -d -v ./...
 RUN go install -v ./...
 
-CMD ["app"]
+CMD ["client"]
