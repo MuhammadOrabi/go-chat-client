@@ -18,7 +18,7 @@ var (
 
 // chatCmd represents the chat command
 var chatCmd = &cobra.Command{
-	Use:   "chat",
+	Use:   "chats",
 	Short: "Manage Chats",
 	Long: `manage your chats. For example:
 

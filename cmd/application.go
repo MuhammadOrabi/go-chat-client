@@ -18,13 +18,13 @@ var (
 
 // applicationCmd represents the application command
 var applicationCmd = &cobra.Command{
-	Use:   "application",
+	Use:   "applications",
 	Short: "Manage applications",
 	Long: `manage your applications. For example:
 
-client application
-client application --new app1
-client application --show f47c3e1f9c9960fe5c3d2749505e32004aced4b6
+client applications
+client applications --new app1
+client applications --show f47c3e1f9c9960fe5c3d2749505e32004aced4b6
 `,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if name != "" {
